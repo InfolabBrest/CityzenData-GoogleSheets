@@ -1,0 +1,39 @@
+<script>
+function onSuccess(err) {
+    var div = document.getElementById('error');
+    
+    console.log(err);
+    
+    if(err) {
+        div.innerHTML = '<b>Error : </b>' + err;
+    }
+    else {
+        div.innerHTML = '';
+        google.script.host.close();
+    }    
+  }
+</script>
+
+<div>
+  <h2>Einstein Script</h2>
+
+  <div id="error" style="color: red">
+  
+  </div>
+  <form>
+    <div>
+      <textarea name="einstein" style="width: 100%; height:12em">
+'DOC-EGRESS-TOKEN'
+'mozfest.light'
+'moteId'
+'53'
+2 ->MAP
+'2013-01-01T00:00:00.000Z'
+'2014-01-01T00:00:00.000Z'
+5 ->LIST
+FETCH
+      </textarea>
+    </div>
+    <input type="button" value="Emit" onclick="google.script.run.withSuccessHandler(onSuccess).request(this.parentNode)" />
+  </form>
+</div>
